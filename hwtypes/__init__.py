@@ -1,9 +1,25 @@
-from .bit_vector import *
-from .bit_vector_abc import *
 from .adt import *
-from .smt_bit_vector import *
-from .z3_bit_vector import *
+from .bit_vector_abc import *
+from .bit_vector import *
 from .fp_vector_abc import *
-from .fp_vector import *
-from .smt_fp_vector import *
 from .modifiers import *
+
+try:
+    from .fp_vector import *
+except ImportError:
+    pass
+
+try:
+    from .smt_bit_vector import *
+except ImportError:
+    pass
+
+try:
+    from .z3_bit_vector import *
+except ImportError:
+    pass
+
+try:
+    from .smt_fp_vector import *
+except ImportError:
+    pass

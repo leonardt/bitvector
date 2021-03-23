@@ -14,6 +14,12 @@ from setuptools import setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+FP_requries   = ['gmpy2']
+SMT_requires  = ['pysmt']
+Z3_requries   = ['z3-solver']
+ALL_requires  = FP_requries+SMT_requires+Z3_requries
+TEST_requires = ALL_requires+['pytest-cov']
+
 setup(
     name='hwtypes',
     url='https://github.com/leonardt/hwtypes',
@@ -26,8 +32,15 @@ setup(
     packages=[
         "hwtypes",
     ],
-    install_requires=['pysmt', 'z3-solver', 'gmpy2'],
+    install_requires=[],
+    extras_require={
+        'FP'  : FP_requries,
+        'SMT' : SMT_requires,
+        'Z3'  : Z3_requries,
+        'ALL' : ALL_requires,
+        'TEST': TEST_requires,
+    },
     long_description=long_description,
-    long_description_content_type="text/markdown"
-    # python_requires='>=3.6'
+    long_description_content_type="text/markdown",
+    python_requires='>=3.6',
 )
